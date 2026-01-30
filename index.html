@@ -16,9 +16,47 @@ body {
         radial-gradient(circle at top, #f5d58a22, transparent 60%),
         linear-gradient(160deg, #06140f, #0c2418);
     color: #ffffff;
+    overflow: hidden;
+}
+
+/* ⭐ النجوم */
+.star {
+    position: absolute;
+    top: -10px;
+    width: 2px;
+    height: 2px;
+    background: #f5d58a;
+    border-radius: 50%;
+    opacity: 0.8;
+    animation: fall linear infinite;
+    box-shadow: 0 0 6px rgba(245,213,138,0.8);
+}
+
+@keyframes fall {
+    from {
+        transform: translateY(-10px);
+        opacity: 0;
+    }
+    10% { opacity: 1; }
+    to {
+        transform: translateY(110vh);
+        opacity: 0;
+    }
+}
+
+/* نجوم بأحجام مختلفة */
+.star.small { width: 1.5px; height: 1.5px; animation-duration: 8s; }
+.star.medium { width: 2px; height: 2px; animation-duration: 12s; }
+.star.large { width: 3px; height: 3px; animation-duration: 16s; }
+
+/* الحاوية */
+.container {
+    height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
+    position: relative;
+    z-index: 2;
 }
 
 .wrapper {
@@ -36,7 +74,7 @@ body {
     position: relative;
 }
 
-/* 🧵 شراشيب نيون حقيقي */
+/* 🧵 الشراشيب */
 .bunting {
     position: absolute;
     top: 2px;
@@ -121,9 +159,22 @@ p {
 
 <body>
 
+<!-- ⭐ النجوم -->
+<div class="star small" style="left:5%; animation-delay:0s;"></div>
+<div class="star medium" style="left:15%; animation-delay:2s;"></div>
+<div class="star small" style="left:25%; animation-delay:4s;"></div>
+<div class="star large" style="left:35%; animation-delay:1s;"></div>
+<div class="star medium" style="left:45%; animation-delay:3s;"></div>
+<div class="star small" style="left:55%; animation-delay:5s;"></div>
+<div class="star large" style="left:65%; animation-delay:2s;"></div>
+<div class="star medium" style="left:75%; animation-delay:4s;"></div>
+<div class="star small" style="left:85%; animation-delay:1s;"></div>
+<div class="star large" style="left:95%; animation-delay:3s;"></div>
+
+<div class="container">
 <div class="wrapper">
 
-    <!-- شراشيب نيون SVG حقيقي -->
+    <!-- شراشيب نيون SVG -->
     <div class="bunting">
         <svg viewBox="0 0 100 20" preserveAspectRatio="none">
             <defs>
@@ -161,12 +212,13 @@ p {
         <div class="unit"><span id="seconds">0</span><small>ثانية</small></div>
     </div>
 
-    <a href="https://facebook.com/mandobbk" target="_blank" class="btn">
+    <a href="https://facebook.com/mmandobk" target="_blank" class="btn">
         تابع أخبار مندوبك عبر فيسبوك
     </a>
 
     <div class="footer">Mandobk © 2026</div>
 
+</div>
 </div>
 
 <script>
