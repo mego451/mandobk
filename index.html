@@ -10,7 +10,7 @@
 
 body {
     margin: 0;
-    height: 100vh;
+    min-height: 100vh;
     font-family: "Cairo", Arial, sans-serif;
     background:
         radial-gradient(circle at top, #f5d58a22, transparent 60%),
@@ -23,53 +23,46 @@ body {
 .star {
     position: absolute;
     top: -10px;
-    width: 2px;
-    height: 2px;
     background: #f5d58a;
     border-radius: 50%;
-    opacity: 0.8;
+    opacity: 0.75;
     animation: fall linear infinite;
     box-shadow: 0 0 6px rgba(245,213,138,0.8);
 }
 
-@keyframes fall {
-    from {
-        transform: translateY(-10px);
-        opacity: 0;
-    }
-    10% { opacity: 1; }
-    to {
-        transform: translateY(110vh);
-        opacity: 0;
-    }
-}
-
-/* نجوم بأحجام مختلفة */
 .star.small { width: 1.5px; height: 1.5px; animation-duration: 8s; }
 .star.medium { width: 2px; height: 2px; animation-duration: 12s; }
 .star.large { width: 3px; height: 3px; animation-duration: 16s; }
 
+@keyframes fall {
+    from { transform: translateY(-10px); opacity: 0; }
+    10% { opacity: 1; }
+    to { transform: translateY(110vh); opacity: 0; }
+}
+
 /* الحاوية */
 .container {
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
+    padding: 16px;
     position: relative;
     z-index: 2;
 }
 
+/* الكارت */
 .wrapper {
-    width: 94%;
-    max-width: 540px;
-    padding: 65px 40px 45px;
-    border-radius: 34px;
+    width: 100%;
+    max-width: 520px;
+    padding: 64px 32px 40px;
+    border-radius: 28px;
     background: rgba(255,255,255,0.06);
     backdrop-filter: blur(22px);
     border: 1px solid rgba(245,213,138,0.35);
     box-shadow:
-        0 35px 90px rgba(0,0,0,0.7),
-        inset 0 0 45px rgba(245,213,138,0.06);
+        0 30px 80px rgba(0,0,0,0.7),
+        inset 0 0 40px rgba(245,213,138,0.06);
     text-align: center;
     position: relative;
 }
@@ -77,11 +70,11 @@ body {
 /* 🧵 الشراشيب */
 .bunting {
     position: absolute;
-    top: 2px;
-    left: 47%;
+    top: 4px;
+    left: 50%;
     transform: translateX(-50%);
-    width: 80%;
-    height: 40px;
+    width: 85%;
+    height: 36px;
 }
 
 .bunting svg {
@@ -89,70 +82,90 @@ body {
     height: 100%;
 }
 
-/* هلال */
+/* الهلال */
 .wrapper::before {
     content: "🌙";
     position: absolute;
-    top: -22px;
-    right: 22px;
-    font-size: 34px;
-    filter: drop-shadow(0 0 12px #f5d58a88);
+    top: -20px;
+    right: 18px;
+    font-size: 30px;
+    filter: drop-shadow(0 0 10px #f5d58a88);
 }
 
+/* اللوجو */
 .logo {
-    width: 185px;
-    margin-bottom: 18px;
+    width: clamp(140px, 45vw, 185px);
+    margin-bottom: 16px;
     filter:
         drop-shadow(0 0 10px rgba(245,213,138,0.6))
         drop-shadow(0 0 18px rgba(245,213,138,0.35));
 }
 
+/* العناوين */
 h1 {
-    font-size: 32px;
+    font-size: clamp(24px, 6vw, 32px);
     color: #f5d58a;
-    margin: 10px 0 6px;
+    margin: 8px 0 6px;
 }
 
 p {
+    font-size: clamp(14px, 4.2vw, 17px);
     opacity: 0.9;
-    margin-bottom: 30px;
+    margin-bottom: 26px;
 }
 
 /* العداد */
 .countdown {
     display: grid;
-    grid-template-columns: repeat(4,1fr);
-    gap: 14px;
-    margin-bottom: 30px;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    margin-bottom: 26px;
 }
 
 .unit {
-    padding: 18px;
-    border-radius: 22px;
+    padding: 14px 8px;
+    border-radius: 18px;
     background: linear-gradient(160deg,#102f22,#081f16);
     border: 1px solid rgba(245,213,138,0.45);
 }
 
 .unit span {
-    font-size: 30px;
+    display: block;
+    font-size: clamp(18px, 5vw, 30px);
     font-weight: bold;
     color: #f5d58a;
 }
 
+.unit small {
+    font-size: 11px;
+    opacity: 0.8;
+}
+
+/* زرار */
 .btn {
     display: inline-block;
-    padding: 15px 34px;
-    border-radius: 35px;
+    width: 100%;
+    max-width: 320px;
+    padding: 14px 20px;
+    border-radius: 30px;
     background: linear-gradient(135deg,#f5d58a,#e6b95c);
     color: #1b2b1f;
     font-weight: bold;
     text-decoration: none;
 }
 
+/* الفوتر */
 .footer {
-    margin-top: 28px;
-    font-size: 13px;
+    margin-top: 24px;
+    font-size: 12px;
     opacity: 0.6;
+}
+
+/* 📱 تحسينات الموبايل */
+@media (max-width: 480px) {
+    .bunting { height: 30px; }
+    .wrapper { padding: 56px 24px 36px; }
+    .countdown { gap: 8px; }
 }
 </style>
 </head>
@@ -174,12 +187,12 @@ p {
 <div class="container">
 <div class="wrapper">
 
-    <!-- شراشيب نيون SVG -->
+    <!-- شراشيب -->
     <div class="bunting">
         <svg viewBox="0 0 100 20" preserveAspectRatio="none">
             <defs>
                 <filter id="neon">
-                    <feGaussianBlur stdDeviation="1.8" result="blur"/>
+                    <feGaussianBlur stdDeviation="1.6" result="blur"/>
                     <feMerge>
                         <feMergeNode in="blur"/>
                         <feMergeNode in="SourceGraphic"/>
