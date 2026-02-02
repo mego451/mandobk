@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<title>Mandobk | مندوبك</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- SEO -->
+<meta name="description" content="Mandobk – منصة توصيل ذكية داخل بورسعيد. حمّل التطبيق أو انضم ككابتن الآن.">
+
+<!-- Favicon -->
+<link rel="icon" type="image/png" href="https://i.ibb.co/Q3tq5NMd/MANDOBK-2-removebg-preview-1-removebg-preview.png">
+<link rel="apple-touch-icon" href="https://i.ibb.co/Q3tq5NMd/MANDOBK-2-removebg-preview-1-removebg-preview.png">
+
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800&display=swap" rel="stylesheet">
+
+<style>
+:root{
+    --bg:#020617;
+    --green:#22c55e;
+    --green-glow:rgba(34,197,94,.45);
+    --text-muted:#94a3b8;
+    --card:rgba(255,255,255,.04);
+}
+
+*{box-sizing:border-box;font-family:"Cairo",sans-serif}
+html{scroll-behavior:smooth}
+
+body{
+    margin:0;
+    background:radial-gradient(circle at top,#052e1c,var(--bg) 45%);
+    color:#fff;
+}
+
+/* NAVBAR */
+nav{
+    position:fixed;
+    top:0;
+    width:100%;
+    padding:14px 40px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    backdrop-filter:blur(14px);
+    background:rgba(2,6,23,.6);
+    z-index:1000;
+}
+.brand{display:flex;align-items:center;gap:12px}
+.brand img{height:40px}
+.brand span{font-size:20px;font-weight:800}
+
+.menu-btn{
+    width:44px;height:44px;border-radius:50%;
+    background:rgba(255,255,255,.06);
+    border:1px solid rgba(255,255,255,.15);
+    display:flex;align-items:center;justify-content:center;
+    cursor:pointer;font-size:22px;
+    transition:.25s;
+}
+.menu-btn.active{
+    background:rgba(34,197,94,.15);
+    color:var(--green);
+    box-shadow:0 0 20px var(--green-glow);
+}
+
+.dropdown{
+    position:absolute;
+    top:72px;left:40px;
+    width:240px;
+    background:rgba(2,6,23,.96);
+    border-radius:18px;
+    padding:12px;
+    display:none;
+}
+.dropdown a{
+    display:block;padding:12px 16px;
+    border-radius:12px;
+    color:#fff;text-decoration:none;font-weight:600
+}
+.dropdown a:hover{
+    background:rgba(34,197,94,.15);
+    color:var(--green)
+}
+
+/* HERO */
+header{
+    padding:180px 20px 130px;
+    text-align:center
+}
+header h1{font-size:54px}
+header span{
+    color:var(--green);
+    text-shadow:0 0 30px var(--green-glow)
+}
+header p{
+    color:var(--text-muted);
+    font-size:20px;
+    max-width:680px;
+    margin:15px auto
+}
+
+.actions{margin-top:45px}
+.btn{
+    padding:15px 36px;border-radius:999px;
+    margin:10px;font-weight:700;text-decoration:none;
+    display:inline-block
+}
+.btn.primary{
+    background:var(--green);
+    color:#02110a;
+    box-shadow:0 0 35px var(--green-glow)
+}
+.btn.secondary{
+    border:1px solid var(--green);
+    color:var(--green)
+}
+
+/* SECTIONS */
+section{
+    max-width:1200px;
+    margin:auto;
+    padding:90px 20px
+}
+.section-title{
+    text-align:center;
+    font-size:36px;
+    margin-bottom:55px
+}
+
+/* GRID */
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:28px
+}
+.card{
+    background:var(--card);
+    padding:34px;
+    border-radius:26px;
+    border:1px solid rgba(255,255,255,.06)
+}
+.card h3{color:var(--green)}
+.card p{color:var(--text-muted)}
+
+.tags{
+    display:flex;
+    flex-wrap:wrap;
+    gap:12px;
+    justify-content:center
+}
+.tag{
+    padding:10px 18px;
+    border-radius:999px;
+    background:rgba(255,255,255,.05);
+    border:1px solid rgba(255,255,255,.1)
+}
+
+/* CTA */
+.cta{
+    text-align:center;
+    background:linear-gradient(135deg,rgba(34,197,94,.25),transparent);
+    border-radius:35px;
+    padding:90px 20px
+}
+
+/* FOOTER */
+footer{
+    padding:60px 20px;
+    background:#020617;
+    border-top:1px solid rgba(255,255,255,.06)
+}
+.footer-grid{
+    max-width:1200px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:40px
+}
+footer h4{margin-bottom:12px}
+footer a{
+    display:block;
+    color:var(--text-muted);
+    text-decoration:none;
+    margin-bottom:8px
+}
+footer a:hover{color:var(--green)}
+.copy{
+    text-align:center;
+    margin-top:40px;
+    color:var(--text-muted)
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+    <div class="brand">
+        <img src="https://i.ibb.co/Q3tq5NMd/MANDOBK-2-removebg-preview-1-removebg-preview.png">
+        <span>Mandobk</span>
+    </div>
+
+    <div class="menu-btn" id="menuBtn" onclick="toggleMenu()">☰</div>
+
+    <div class="dropdown" id="menu">
+        <a href="#home">الرئيسية</a>
+        <a href="#why">ليه Mandobk</a>
+        <a href="#services">أنواع الطلبات</a>
+        <a href="#coverage">مناطق التغطية</a>
+        <a href="https://wa.me/201029187379" target="_blank">انضم ككابتن</a>
+        <a href="https://wa.me/201029187379" target="_blank">الدعم</a>
+    </div>
+</nav>
+
+<header id="home">
+    <h1>مندوبك… <span>حل التوصيل</span> الذكي</h1>
+    <p>من مشوار بسيط لتوصيل تجاري — Mandobk بيغطي كل احتياجاتك بسرعة وأمان</p>
+
+    <div class="actions">
+        <a class="btn primary" href="https://www.mediafire.com/file/eucbr7cfpxjnb3x/Mandobk_v1.apk/file" target="_blank">
+            حمّل التطبيق
+        </a>
+        <a class="btn secondary" href="https://wa.me/201029187379" target="_blank">
+            انضم ككابتن
+        </a>
+    </div>
+</header>
+
+<section id="why">
+    <h2 class="section-title">ليه تختار Mandobk؟</h2>
+    <div class="grid">
+        <div class="card">⚡ سرعة</div>
+        <div class="card">🛡️ أمان</div>
+        <div class="card">📊 تحكم</div>
+        <div class="card">💸 سعر عادل</div>
+    </div>
+</section>
+
+<section id="services">
+    <h2 class="section-title">أنواع الطلبات</h2>
+    <div class="grid">
+        <div class="card">📦 توصيل طلبات</div>
+        <div class="card">🏪 توصيل محلات</div>
+        <div class="card">📄 مشاوير أوراق</div>
+        <div class="card">🏠 توصيل منزلي</div>
+    </div>
+</section>
+
+<section id="coverage">
+    <h2 class="section-title">مناطق التغطية</h2>
+    <div class="tags">
+        <div class="tag">بورسعيد</div>
+        <div class="tag">بورفؤاد</div>
+        <div class="tag">الحي الإماراتي</div>
+    </div>
+</section>
+
+<section class="cta">
+    <h2>Mandobk مش مجرد تطبيق… دي تجربة</h2>
+    <p>ابدأ دلوقتي وخلّي التوصيل أسهل من أي وقت</p>
+    <a href="https://wa.me/201029187379" target="_blank" class="btn primary">ابدأ الآن</a>
+</section>
+
+<footer>
+    <div class="footer-grid">
+        <div>
+            <h4>Mandobk</h4>
+            <p style="color:var(--text-muted)">منصة توصيل ذكية داخل بورسعيد</p>
+        </div>
+        <div>
+            <h4>روابط</h4>
+            <a href="https://wa.me/201029187379" target="_blank">عن الشركة</a>
+            <a href="https://wa.me/201029187379" target="_blank">الشروط</a>
+            <a href="https://wa.me/201029187379" target="_blank">الخصوصية</a>
+        </div>
+        <div>
+            <h4>للكباتن</h4>
+            <a href="https://wa.me/201029187379" target="_blank">التسجيل</a>
+        </div>
+        <div>
+            <h4>الدعم</h4>
+            <a href="https://wa.me/201029187379" target="_blank">تواصل معنا</a>
+        </div>
+    </div>
+    <div class="copy">
+© 2026 Mandobk. All rights reserved.<br><br>
+
+This website, mobile application, design, user interface, source code, databases, graphics, logos, trademarks, text content, and all related materials are the exclusive intellectual property of Mandobk and its owner Magdy Magd [ AKA: MegZ ].<br><br>
+Any reproduction, copying, redistribution, modification, reverse engineering, resale, publication, or use of any part of this project without prior written permission from Mandobk is strictly prohibited and may result in legal action.
+</div>
+
+</footer>
+
+<!-- WhatsApp Floating Button -->
+<a href="https://wa.me/201029187379"
+   target="_blank"
+   aria-label="WhatsApp Mandobk"
+   style="
+     position:fixed;
+     bottom:22px;
+     right:22px;
+     width:58px;
+     height:58px;
+     background:#25D366;
+     border-radius:50%;
+     display:flex;
+     align-items:center;
+     justify-content:center;
+     box-shadow:0 0 25px rgba(37,211,102,.6);
+     z-index:9999;
+   ">
+   <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg"
+        alt="WhatsApp"
+        style="width:30px;height:30px">
+</a>
+
+<script>
+function toggleMenu(){
+    const menu = document.getElementById("menu");
+    const btn  = document.getElementById("menuBtn");
+
+    if(menu.style.display === "block"){
+        menu.style.display = "none";
+        btn.classList.remove("active");
+        btn.innerHTML = "☰";
+    }else{
+        menu.style.display = "block";
+        btn.classList.add("active");
+        btn.innerHTML = "✕";
+    }
+}
+
+document.addEventListener("click", function(e){
+    const menu = document.getElementById("menu");
+    const btn  = document.getElementById("menuBtn");
+
+    if(!menu.contains(e.target) && !btn.contains(e.target)){
+        menu.style.display = "none";
+        btn.classList.remove("active");
+        btn.innerHTML = "☰";
+    }
+});
+</script>
+
+</body>
+</html>
